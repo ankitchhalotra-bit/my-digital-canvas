@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Section } from "./Section";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -19,20 +19,25 @@ export function Contact() {
       <div className="grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5 space-y-8">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I'm currently taking on new freelance and full-time opportunities for Q3 2026.
-            The fastest way to reach me is email — I usually reply within a day.
+            Open to backend / Java engineering roles and interesting fintech problems.
+            Email is the fastest way to reach me — I usually reply within a day.
           </p>
           <a
-            href="mailto:hello@kovac.dev"
+            href="mailto:chhalotraankit@gmail.com"
             className="font-display text-3xl md:text-4xl text-foreground hover:text-primary transition-colors inline-flex items-center gap-3"
           >
-            <Mail className="w-7 h-7" /> hello@kovac.dev
+            <Mail className="w-7 h-7" /> chhalotraankit@gmail.com
+          </a>
+          <a
+            href="tel:+918435513160"
+            className="block font-display text-2xl text-foreground hover:text-primary transition-colors"
+          >
+            <span className="inline-flex items-center gap-3"><Phone className="w-5 h-5" /> +91 84355 13160</span>
           </a>
           <div className="flex items-center gap-3 pt-4">
             {[
-              { Icon: Github, href: "https://github.com" },
-              { Icon: Linkedin, href: "https://linkedin.com" },
-              { Icon: Twitter, href: "https://twitter.com" },
+              { Icon: Github, href: "https://github.com/Ankitchhalotra" },
+              { Icon: Linkedin, href: "https://linkedin.com/in/ankit-chhalotra" },
             ].map(({ Icon, href }, i) => (
               <a
                 key={i}
