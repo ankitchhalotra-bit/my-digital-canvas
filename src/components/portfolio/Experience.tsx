@@ -2,31 +2,30 @@ import { Section } from "./Section";
 
 const items = [
   {
-    when: "2023 — Now",
-    role: "Senior Software Engineer",
-    org: "Northwind Labs",
-    detail:
-      "Leading the platform team. Rebuilt the analytics pipeline, cutting query latency by 8×.",
-  },
-  {
-    when: "2021 — 2023",
-    role: "Full-Stack Engineer",
-    org: "Foundry.io",
-    detail:
-      "Shipped the v2 design system and migrated 40+ apps to a unified component library.",
-  },
-  {
-    when: "2019 — 2021",
+    when: "Jun 2025 — Now",
     role: "Software Engineer",
-    org: "Beacon Studio",
+    org: "Lise Infotech Pvt. Ltd. — On-site",
     detail:
-      "Built data-heavy dashboards for Fortune-500 clients. Mentored two junior engineers.",
+      "Building ATM & POS drivers on the Postilion Realtime Framework. Spring Boot/MVC backends, JDBC/JPA optimization, RCA, and SonarQube-compliant secure REST APIs.",
   },
   {
-    when: "2015 — 2019",
-    role: "B.Sc. Computer Science",
-    org: "University of Zagreb",
-    detail: "Graduated with honors. Thesis on incremental rendering algorithms.",
+    when: "Sep 2024 — Mar 2025",
+    role: "Software Development Intern",
+    org: "Oak Tree Software Pvt. Ltd. — On-site",
+    detail:
+      "Built RESTful APIs and integrated dynamic frontends. End-to-end full-stack work across the project lifecycle, from requirement analysis to deployment.",
+  },
+  {
+    when: "Aug 2021 — Jun 2025",
+    role: "B.Tech, Computer Science & Engineering",
+    org: "Chameli Devi Group of Institutions, Indore",
+    detail: "CGPA 7.37. Coursework spanning data structures, databases, and distributed systems.",
+  },
+  {
+    when: "Jul 2018 — Jul 2021",
+    role: "Higher Secondary Certification",
+    org: "Abhigyan International School, Sanawad",
+    detail: "Aggregate 76.6%.",
   },
 ];
 
