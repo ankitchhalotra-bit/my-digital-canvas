@@ -3,19 +3,19 @@ import { Section } from "./Section";
 const groups = [
   {
     name: "Languages",
-    items: ["TypeScript", "Rust", "Python", "Go", "SQL"],
+    items: ["Java (J2SE/J2EE)", "SQL", "JavaScript", "HTML/CSS"],
   },
   {
-    name: "Frontend",
-    items: ["React", "Next.js", "TanStack", "Tailwind", "Framer Motion"],
+    name: "Frameworks",
+    items: ["Spring Boot", "Spring MVC", "Hibernate", "JPA", "Postilion RT"],
   },
   {
     name: "Backend",
-    items: ["Node.js", "tRPC", "GraphQL", "Postgres", "Redis"],
+    items: ["REST APIs", "JDBC", "MySQL", "JUnit", "Mockito"],
   },
   {
     name: "Platform",
-    items: ["AWS", "Cloudflare", "Docker", "Terraform", "GitHub Actions"],
+    items: ["AWS (EC2, RDS)", "Docker", "GitHub Actions", "SonarQube", "Postman"],
   },
 ];
 

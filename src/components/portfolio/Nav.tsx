@@ -35,7 +35,7 @@ export function Nav() {
           onClick={() => go("hero")}
           className="font-display text-xl tracking-tight hover:text-primary transition-colors"
         >
-          a.kovac<span className="text-primary">.</span>
+          ankit<span className="text-primary">.</span>
         </button>
         <ul className="hidden md:flex items-center gap-8 text-sm">
           {links.map((l, i) => (
@@ -52,7 +52,7 @@ export function Nav() {
           ))}
         </ul>
         <a
-          href="/resume.pdf"
+          href="/AnkitChhalotra_Resume.pdf"
           download
           className="hidden md:inline-flex items-center gap-2 text-sm font-medium border border-foreground/20 hover:border-primary hover:text-primary px-4 py-2 rounded-full transition-all"
         >
@@ -79,7 +79,7 @@ export function Nav() {
               </li>
             ))}
             <li>
-              <a href="/resume.pdf" download className="text-primary">Resume ↓</a>
+              <a href="/AnkitChhalotra_Resume.pdf" download className="text-primary">Resume ↓</a>
             </li>
           </ul>
         </div>

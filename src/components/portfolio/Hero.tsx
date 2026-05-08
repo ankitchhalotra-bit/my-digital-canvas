@@ -1,5 +1,5 @@
 import heroImg from "@/assets/hero-portrait.jpg";
-import { ArrowDownRight, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowDownRight, Github, Linkedin, Mail } from "lucide-react";
 
 export function Hero() {
   return (
@@ -7,15 +7,15 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6 lg:px-12 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7 reveal">
           <p className="font-mono text-xs tracking-[0.3em] uppercase text-primary mb-6">
-            ◆ Software Engineer · Available Q3 2026
+            ◆ Java Software Engineer · Fintech
           </p>
           <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] tracking-tight">
-            Building <em className="italic text-primary/90">calm</em>,
+            Building <em className="italic text-primary/90">scalable</em>
             <br />
-            considered
+            backend
             <br />
             <span className="relative inline-block">
-              software.
+              systems.
               <svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 300 12"
@@ -32,9 +32,9 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-8 max-w-lg text-lg text-muted-foreground leading-relaxed">
-            I'm <span className="text-foreground font-medium">Alex Kovac</span>, a full-stack
-            engineer crafting performant, accessible web products at the intersection of
-            design and engineering.
+            I'm <span className="text-foreground font-medium">Ankit Chhalotra</span>, a
+            Software Engineer with 1+ year of experience in fintech, specializing in
+            Java, Spring Boot, and the Postilion Realtime Framework for ATM & POS systems.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
@@ -50,9 +50,9 @@ export function Hero() {
             </a>
             <div className="flex items-center gap-1">
               {[
-                { Icon: Github, href: "https://github.com" },
-                { Icon: Linkedin, href: "https://linkedin.com" },
-                { Icon: Twitter, href: "https://twitter.com" },
+                { Icon: Github, href: "https://github.com/Ankitchhalotra" },
+                { Icon: Linkedin, href: "https://linkedin.com/in/ankit-chhalotra" },
+                { Icon: Mail, href: "mailto:chhalotraankit@gmail.com" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -81,12 +81,12 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-cream font-mono text-xs">
               <div>
-                <div className="opacity-60">LAT 45.81° N</div>
-                <div className="opacity-60">LON 15.98° E</div>
+                <div className="opacity-60">INDORE</div>
+                <div className="opacity-60">INDIA</div>
               </div>
               <div className="text-right">
                 <div className="opacity-60">PORTFOLIO</div>
-                <div className="opacity-60">VOL. 07 / 2026</div>
+                <div className="opacity-60">VOL. 05 / 2026</div>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ export function Hero() {
         <div className="flex gap-12 marquee whitespace-nowrap font-display text-3xl md:text-4xl">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex gap-12 items-center shrink-0">
-              {["TypeScript", "React", "Node.js", "Postgres", "Rust", "Design Systems", "Distributed Systems"].map(
+              {["Java", "Spring Boot", "Hibernate", "Postilion", "MySQL", "Docker", "AWS", "REST APIs"].map(
                 (w) => (
                   <span key={w} className="flex items-center gap-12">
                     <span className="italic text-foreground/80">{w}</span>

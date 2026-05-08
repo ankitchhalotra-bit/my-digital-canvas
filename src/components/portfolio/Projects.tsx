@@ -7,37 +7,37 @@ import p4 from "@/assets/project-4.jpg";
 
 const projects = [
   {
-    title: "Lumen Analytics",
+    title: "ATM & POS Drivers",
     blurb:
-      "Real-time product analytics platform processing 2B events per month with sub-second query latency.",
-    tech: ["TypeScript", "Rust", "ClickHouse", "Next.js"],
+      "Enterprise ATM & POS driver development on the Postilion Realtime Framework — supporting high-throughput transaction processing for fintech integrations.",
+    tech: ["Java", "Postilion", "Spring Boot", "JDBC"],
     img: p1,
     href: "#",
     span: "lg:col-span-7",
   },
   {
-    title: "Helio Design System",
+    title: "RESTful API Platform",
     blurb:
-      "Open-source component library with 80+ accessible primitives, used by 12k+ developers.",
-    tech: ["React", "Radix", "Tailwind", "Storybook"],
+      "Designed and implemented RESTful web services for CRUD operations on user data, with logging, SonarQube quality gates, and Postman test suites.",
+    tech: ["Spring Boot", "Spring Data JPA", "MySQL", "SonarQube"],
     img: p2,
-    href: "#",
+    href: "https://github.com/Ankitchhalotra",
     span: "lg:col-span-5",
   },
   {
-    title: "Drift Editor",
+    title: "Algorithm Visualizer",
     blurb:
-      "Collaborative markdown editor with CRDT-based sync, offline-first and end-to-end encrypted.",
-    tech: ["Yjs", "WebRTC", "IndexedDB"],
+      "Web platform that helps users understand algorithms through animations and step-by-step execution, backed by a Java/Servlet/JSP stack.",
+    tech: ["Java", "Servlet", "JSP", "MySQL", "JS"],
     img: p3,
-    href: "#",
+    href: "https://github.com/Ankitchhalotra",
     span: "lg:col-span-5",
   },
   {
-    title: "Orbit Scheduler",
+    title: "Full-Stack App Suite",
     blurb:
-      "Distributed cron system handling 50M+ jobs/day with exactly-once semantics and visual debugging.",
-    tech: ["Go", "Postgres", "Kafka"],
+      "End-to-end full-stack application work during my internship at Oak Tree Software — building backend APIs and integrating dynamic frontends from requirement to deployment.",
+    tech: ["Java", "Spring Boot", "REST", "MySQL"],
     img: p4,
     href: "#",
     span: "lg:col-span-7",
