@@ -57,6 +57,14 @@ export function Contact() {
           className="lg:col-span-7 space-y-6"
           onSubmit={(e) => {
             e.preventDefault();
+            const f = e.currentTarget as HTMLFormElement;
+            const data = new FormData(f);
+            const name = String(data.get("name") || "");
+            const email = String(data.get("email") || "");
+            const subject = String(data.get("subject") || "Portfolio enquiry");
+            const message = String(data.get("message") || "");
+            const body = `Hi Ankit,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A— ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+            window.location.href = `mailto:chhalotraankit@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
             setSent(true);
           }}
         >
@@ -79,6 +87,7 @@ export function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   required
                   rows={5}
                   className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-lg resize-none"
