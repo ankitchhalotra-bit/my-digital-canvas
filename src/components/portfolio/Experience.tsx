@@ -21,12 +21,6 @@ const items = [
     org: "Chameli Devi Group of Institutions, Indore",
     detail: "CGPA 7.37. Coursework spanning data structures, databases, and distributed systems.",
   },
-  {
-    when: "Jul 2018 — Jul 2021",
-    role: "Higher Secondary Certification",
-    org: "Abhigyan International School, Sanawad",
-    detail: "Aggregate 76.6%.",
-  },
 ];
 
 export function Experience() {
