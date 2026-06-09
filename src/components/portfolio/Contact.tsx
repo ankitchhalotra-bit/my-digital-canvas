@@ -78,10 +78,15 @@ export function Contact() {
               );
               if (fnError) throw fnError;
               if ((res as any)?.error) throw new Error((res as any).error);
+              if ((res as any)?.emailed === false) {
+                throw new Error(
+                  (res as any)?.error || "Message saved, but email notification was not delivered.",
+                );
+              }
               setSent(true);
             } catch (err: any) {
               console.error(err);
-              setError("Couldn't send your message. Please try again or email directly.");
+              setError(err?.message || "Couldn't send your message. Please try again or email directly.");
             } finally {
               setSending(false);
             }
