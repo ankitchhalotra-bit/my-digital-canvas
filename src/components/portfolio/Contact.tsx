@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Section } from "./Section";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <Section
@@ -55,17 +58,33 @@ export function Contact() {
 
         <form
           className="lg:col-span-7 space-y-6"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             const f = e.currentTarget as HTMLFormElement;
             const data = new FormData(f);
-            const name = String(data.get("name") || "");
-            const email = String(data.get("email") || "");
-            const subject = String(data.get("subject") || "Portfolio enquiry");
-            const message = String(data.get("message") || "");
-            const body = `Hi Ankit,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A— ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
-            window.location.href = `mailto:chhalotraankit@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-            setSent(true);
+            const payload = {
+              name: String(data.get("name") || "").trim(),
+              email: String(data.get("email") || "").trim(),
+              phone: String(data.get("phone") || "").trim(),
+              subject: String(data.get("subject") || "").trim(),
+              message: String(data.get("message") || "").trim(),
+            };
+            setError(null);
+            setSending(true);
+            try {
+              const { data: res, error: fnError } = await supabase.functions.invoke(
+                "send-contact-email",
+                { body: payload },
+              );
+              if (fnError) throw fnError;
+              if ((res as any)?.error) throw new Error((res as any).error);
+              setSent(true);
+            } catch (err: any) {
+              console.error(err);
+              setError("Couldn't send your message. Please try again or email directly.");
+            } finally {
+              setSending(false);
+            }
           }}
         >
           {sent ? (
@@ -81,7 +100,10 @@ export function Contact() {
                 <Field label="Your name" name="name" />
                 <Field label="Email" name="email" type="email" />
               </div>
-              <Field label="Subject" name="subject" />
+              <div className="grid md:grid-cols-2 gap-6">
+                <Field label="Phone" name="phone" type="tel" required={false} />
+                <Field label="Subject" name="subject" required={false} />
+              </div>
               <div>
                 <label className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
                   Message
@@ -93,11 +115,15 @@ export function Contact() {
                   className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-lg resize-none"
                 />
               </div>
+              {error && (
+                <p className="text-sm text-destructive">{error}</p>
+              )}
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-foreground text-background px-7 py-3.5 rounded-full font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+                disabled={sending}
+                className="inline-flex items-center gap-2 bg-foreground text-background px-7 py-3.5 rounded-full font-medium hover:bg-primary hover:text-primary-foreground transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send message →
+                {sending ? "Sending…" : "Send message →"}
               </button>
             </>
           )}
@@ -107,7 +133,17 @@ export function Contact() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = true,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <div>
       <label htmlFor={name} className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -117,7 +153,7 @@ function Field({ label, name, type = "text" }: { label: string; name: string; ty
         id={name}
         name={name}
         type={type}
-        required
+        required={required}
         className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-lg"
       />
     </div>
