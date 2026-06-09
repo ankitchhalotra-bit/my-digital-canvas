@@ -7,6 +7,7 @@ const corsHeaders = {
 };
 
 const NOTIFY_TO = "ankitgurjar0607@gmail.com";
+const RESEND_TEST_RECIPIENT = "ankit.chhalotra@cdgi.edu.in";
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -47,7 +48,7 @@ Deno.serve(async (req) => {
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY not configured");
-      return new Response(JSON.stringify({ success: true, emailed: false }), {
+      return new Response(JSON.stringify({ success: false, saved: true, emailed: false, error: "Email notification is not configured." }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
@@ -84,12 +85,18 @@ Deno.serve(async (req) => {
       const errText = await emailRes.text();
       console.error("Resend error:", emailRes.status, errText);
       return new Response(
-        JSON.stringify({ success: true, emailed: false, emailError: errText }),
+        JSON.stringify({
+          success: false,
+          saved: true,
+          emailed: false,
+          error: `Email notification is blocked by Resend until a sending domain is verified. Testing can only send to ${RESEND_TEST_RECIPIENT}.`,
+          emailError: errText,
+        }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
 
-    return new Response(JSON.stringify({ success: true, emailed: true }), {
+    return new Response(JSON.stringify({ success: true, saved: true, emailed: true }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
