@@ -6,7 +6,10 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-const NOTIFY_TO = "ankitgurjar0607@gmail.com";
+// Resend test mode only allows sending to the Resend account owner's email.
+// To deliver to another address, verify a domain at resend.com/domains or
+// use a Resend API key from an account registered with that address.
+const NOTIFY_TO = "ankit.chhalotra@cdgi.edu.in";
 const RESEND_TEST_RECIPIENT = "ankit.chhalotra@cdgi.edu.in";
 
 Deno.serve(async (req) => {
