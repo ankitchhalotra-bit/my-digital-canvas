@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
-import p4 from "@/assets/project-4.jpg";
 
 const projects = [
   {
@@ -31,16 +30,7 @@ const projects = [
     tech: ["Java", "Servlet", "JSP", "MySQL", "JS"],
     img: p3,
     href: "https://github.com/Ankitchhalotra",
-    span: "lg:col-span-5",
-  },
-  {
-    title: "Full-Stack App Suite",
-    blurb:
-      "End-to-end full-stack application work during my internship at Oak Tree Software — building backend APIs and integrating dynamic frontends from requirement to deployment.",
-    tech: ["Java", "Spring Boot", "REST", "MySQL"],
-    img: p4,
-    href: "#",
-    span: "lg:col-span-7",
+    span: "lg:col-span-12",
   },
 ];
 
