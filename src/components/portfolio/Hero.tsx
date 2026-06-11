@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-portrait.jpg";
+import heroAsset from "@/assets/ankit-chhalotra.jpeg.asset.json";
 import { ArrowDownRight, Github, Linkedin, Mail } from "lucide-react";
 
 export function Hero() {
@@ -70,15 +70,22 @@ export function Hero() {
         </div>
 
         <div className="lg:col-span-5 relative reveal" style={{ animationDelay: "0.2s" }}>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-ink">
+          <div
+            className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/30 via-primary/5 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-ink shadow-2xl ring-1 ring-foreground/10 transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_var(--primary)]">
             <img
-              src={heroImg}
-              alt="Portrait"
-              width={1024}
-              height={1280}
-              className="w-full h-full object-cover opacity-95"
+              src={heroAsset.url}
+              alt="Ankit Chhalotra — Java Software Engineer"
+              width={1600}
+              height={2000}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover object-center opacity-95 transition-transform duration-700 ease-out hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-cream font-mono text-xs">
               <div>
                 <div className="opacity-60">INDORE</div>
