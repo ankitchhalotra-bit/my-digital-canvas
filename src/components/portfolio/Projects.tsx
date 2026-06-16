@@ -43,13 +43,16 @@ export function Projects() {
       title={<>Projects I'm proud to have shipped.</>}
     >
       <div className="grid lg:grid-cols-12 gap-8">
-        {projects.map((p) => (
+        {projects.map((p) => {
+          const isSplit = p.title === "Algorithm Visualizer";
+          return (
           <a
             key={p.title}
             href={p.href}
             className={`group relative col-span-12 ${p.span} block`}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
+            <div className={isSplit ? "flex gap-5 lg:block" : ""}>
+            <div className={`relative overflow-hidden rounded-2xl bg-muted ${isSplit ? "w-1/2 aspect-square lg:w-full lg:aspect-[4/3]" : "aspect-[4/3]"}`}>
               <img
                 src={p.img}
                 alt={p.title}
@@ -61,14 +64,14 @@ export function Projects() {
                 <ArrowUpRight className="w-4 h-4" />
               </div>
             </div>
-            <div className="mt-5 flex items-start justify-between gap-6">
+            <div className={`flex items-start justify-between gap-6 ${isSplit ? "w-1/2 lg:w-full mt-0 lg:mt-5 flex-col lg:flex-row" : "mt-5"}`}>
               <div>
-                <h3 className="font-display text-3xl tracking-tight group-hover:text-primary transition-colors">
+                <h3 className={`font-display tracking-tight group-hover:text-primary transition-colors ${isSplit ? "text-xl lg:text-3xl" : "text-3xl"}`}>
                   {p.title}
                 </h3>
-                <p className="mt-2 text-muted-foreground max-w-md">{p.blurb}</p>
+                <p className={`mt-2 text-muted-foreground max-w-md ${isSplit ? "text-sm lg:text-base" : ""}`}>{p.blurb}</p>
               </div>
-              <ul className="hidden md:flex flex-wrap justify-end gap-2 max-w-[40%]">
+              <ul className={`flex-wrap gap-2 ${isSplit ? "flex justify-start lg:justify-end mt-2 lg:mt-0 lg:max-w-[40%]" : "hidden md:flex justify-end max-w-[40%]"}`}>
                 {p.tech.map((t) => (
                   <li
                     key={t}
@@ -79,8 +82,10 @@ export function Projects() {
                 ))}
               </ul>
             </div>
+            </div>
           </a>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
