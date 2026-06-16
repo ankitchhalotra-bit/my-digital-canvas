@@ -13,6 +13,7 @@ const projects = [
     img: p1,
     href: "#",
     span: "lg:col-span-7",
+    alwaysSplit: false,
   },
   {
     title: "RESTful API Platform",
@@ -22,6 +23,7 @@ const projects = [
     img: p2,
     href: "https://github.com/Ankitchhalotra",
     span: "lg:col-span-5",
+    alwaysSplit: false,
   },
   {
     title: "Algorithm Visualizer",
@@ -31,6 +33,7 @@ const projects = [
     img: p3,
     href: "https://github.com/Ankitchhalotra",
     span: "lg:col-span-12",
+    alwaysSplit: true,
   },
 ];
 
@@ -44,46 +47,59 @@ export function Projects() {
     >
       <div className="grid lg:grid-cols-12 gap-8">
         {projects.map((p) => {
-          const isSplit = p.title === "Algorithm Visualizer";
+          // alwaysSplit => image|details side-by-side on every breakpoint
+          // otherwise   => split on mobile, stacked on lg+
+          const wrapperCls = p.alwaysSplit
+            ? "flex gap-5 items-start"
+            : "flex gap-5 lg:block items-start";
+          const imgCls = p.alwaysSplit
+            ? "w-1/2 aspect-square lg:aspect-[4/3]"
+            : "w-1/2 aspect-square lg:w-full lg:aspect-[4/3]";
+          const detailsCls = p.alwaysSplit
+            ? "w-1/2 flex flex-col gap-3"
+            : "w-1/2 lg:w-full flex flex-col gap-3 lg:mt-5 lg:flex-row lg:items-start lg:justify-between";
+
           return (
-          <a
-            key={p.title}
-            href={p.href}
-            className={`group relative col-span-12 ${p.span} block`}
-          >
-            <div className={isSplit ? "flex gap-5 lg:block" : ""}>
-            <div className={`relative overflow-hidden rounded-2xl bg-muted ${isSplit ? "w-1/2 aspect-square lg:w-full lg:aspect-[4/3]" : "aspect-[4/3]"}`}>
-              <img
-                src={p.img}
-                alt={p.title}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-              <div className="absolute top-5 right-5 p-2.5 rounded-full bg-cream/90 text-ink opacity-0 group-hover:opacity-100 transition-opacity">
-                <ArrowUpRight className="w-4 h-4" />
+            <a
+              key={p.title}
+              href={p.href}
+              className={`group relative col-span-12 ${p.span} block`}
+            >
+              <div className={wrapperCls}>
+                <div className={`relative overflow-hidden rounded-2xl bg-muted shrink-0 ${imgCls}`}>
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute top-5 right-5 p-2.5 rounded-full bg-cream/90 text-ink opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
+                <div className={detailsCls}>
+                  <div className="min-w-0">
+                    <h3 className="font-display tracking-tight group-hover:text-primary transition-colors text-xl lg:text-3xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-muted-foreground max-w-md text-sm lg:text-base">
+                      {p.blurb}
+                    </p>
+                  </div>
+                  <ul className={`flex flex-wrap gap-2 ${p.alwaysSplit ? "lg:justify-end lg:max-w-[40%]" : "lg:justify-end lg:max-w-[40%]"}`}>
+                    {p.tech.map((t) => (
+                      <li
+                        key={t}
+                        className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full border border-border text-muted-foreground"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className={`flex items-start justify-between gap-6 ${isSplit ? "w-1/2 lg:w-full mt-0 lg:mt-5 flex-col lg:flex-row" : "mt-5"}`}>
-              <div>
-                <h3 className={`font-display tracking-tight group-hover:text-primary transition-colors ${isSplit ? "text-xl lg:text-3xl" : "text-3xl"}`}>
-                  {p.title}
-                </h3>
-                <p className={`mt-2 text-muted-foreground max-w-md ${isSplit ? "text-sm lg:text-base" : ""}`}>{p.blurb}</p>
-              </div>
-              <ul className={`flex-wrap gap-2 ${isSplit ? "flex justify-start lg:justify-end mt-2 lg:mt-0 lg:max-w-[40%]" : "hidden md:flex justify-end max-w-[40%]"}`}>
-                {p.tech.map((t) => (
-                  <li
-                    key={t}
-                    className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full border border-border text-muted-foreground"
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            </div>
-          </a>
+            </a>
           );
         })}
       </div>
