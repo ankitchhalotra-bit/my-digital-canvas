@@ -1,5 +1,6 @@
 import { Section } from "./Section";
 import { ArrowUpRight } from "lucide-react";
+import { Tilt } from "./VisualFX";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
@@ -66,18 +67,20 @@ export function Projects() {
               className={`group relative col-span-12 ${p.span} block`}
             >
               <div className={wrapperCls}>
-                <div className={`relative overflow-hidden rounded-2xl bg-muted shrink-0 ${imgCls}`}>
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  <div className="absolute top-5 right-5 p-2.5 rounded-full bg-cream/90 text-ink opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="w-4 h-4" />
+                <Tilt max={6} className={`shrink-0 ${imgCls}`}>
+                  <div className="relative overflow-hidden rounded-2xl bg-muted w-full h-full ring-1 ring-border/60 group-hover:ring-primary/40 transition-shadow group-hover:shadow-[0_30px_80px_-30px_var(--primary)]">
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                    <div className="absolute top-5 right-5 p-2.5 rounded-full bg-cream/90 text-ink opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
                   </div>
-                </div>
+                </Tilt>
                 <div className={detailsCls}>
                   <div className="min-w-0">
                     <h3 className="font-display tracking-tight group-hover:text-primary transition-colors text-xl lg:text-3xl">

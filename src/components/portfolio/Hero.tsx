@@ -1,5 +1,6 @@
 import heroAsset from "@/assets/ankit-chhalotra.jpeg.asset.json";
 import { ArrowDownRight, Github, Linkedin, Mail } from "lucide-react";
+import { Tilt } from "./VisualFX";
 
 export function Hero() {
   return (
@@ -74,7 +75,8 @@ export function Hero() {
             className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/30 via-primary/5 to-transparent blur-3xl"
             aria-hidden
           />
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-ink shadow-2xl ring-1 ring-foreground/10 transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_var(--primary)]">
+          <Tilt max={8} className="relative">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-ink shadow-2xl ring-1 ring-foreground/10 transition-shadow duration-500 hover:shadow-[0_40px_100px_-20px_var(--primary)]">
             <img
               src={heroAsset.url}
               alt="Ankit Chhalotra — Java Software Engineer"
@@ -97,7 +99,8 @@ export function Hero() {
               </div>
             </div>
           </div>
-          <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full border border-primary/40 flex items-center justify-center font-mono text-[10px] text-primary animate-spin-slow"
+          </Tilt>
+          <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full border border-primary/40 flex items-center justify-center font-mono text-[10px] text-primary animate-spin-slow float-slow"
                style={{ animation: "spin 18s linear infinite" }}>
             ★ OPEN · TO · WORK ·
           </div>
